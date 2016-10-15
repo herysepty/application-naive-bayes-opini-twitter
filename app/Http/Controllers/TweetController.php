@@ -8,6 +8,8 @@ use App\Http\Requests;
 use DB;
 use Session;
 use Abraham\TwitterOAuth\TwitterOAuth; 
+use Storage;
+use Validator;
 
 
 class TweetController extends Controller
@@ -23,6 +25,55 @@ class TweetController extends Controller
     public function preprocessing()
     {   
         return view('contents.daftar_preprocessing')->with('tweets',DB::table('tweet_preprocessing')->paginate(10));
+    }
+    public function showTraining()
+    {
+       $netral = Storage::get('public/netral.txt');
+       $tweets_netral = explode("\n", $netral);
+       array_shift($tweets_netral);
+
+       $negatif = Storage::get('public/negatif.txt');
+       $tweets_negatif = explode("\n", $netral);
+       array_shift($tweets_negatif);
+       
+       $positif = Storage::get('public/positif.txt');
+       $tweets_positif = explode("\n", $positif);
+       array_shift($tweets_positif);
+        return view('contents.training')->with('tweets_netral',$tweets_netral)->with('tweets_negatif',$tweets_negatif)->with('tweets_positif',$tweets_positif);
+    }
+    public function storeTraining(Request $request)
+    {
+        $p = $request->all();
+        $v = Validator::make($p,[
+              'tweet' => 'required',
+              'tipetraining' => 'required'
+
+          ]);
+        if($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors())->withInput();
+        }
+        else
+        {
+          if($p['tipetraining']=='n')
+          {
+            $netral = Storage::get('public/netral.txt');
+            Storage::put('public/netral.txt',$netral."\n".$p['tweet']);
+            return redirect('/training');
+          }
+          elseif($p['tipetraining']=='p')
+          {
+              $positif = Storage::get('public/positif.txt');
+              Storage::put('public/positif.txt',$positif."\n".$p['tweet']);
+              return redirect('/training');
+          }
+          else
+          {
+              $negatif = Storage::get('public/negatif.txt');
+              Storage::put('public/negatif.txt',$negatif."\n".$p['tweet']);
+              return redirect('/training');
+          }
+        }
     }
     public function unduh(Request $request)
     {

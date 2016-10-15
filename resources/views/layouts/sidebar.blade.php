@@ -47,6 +47,18 @@
                     <p>Analisis</p>
                 </a>
             </li>
+            <li>
+                <a href="{{ URL('training') }}">
+                    <i class="pe-7s-note2"></i>
+                    <p>Tweet Training</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ URL('training/add') }}">
+                    <i class="pe-7s-eyedropper"></i>
+                    <small>Tambah tweet training</small>
+                </a>
+            </li>
             <!--<li>
                 <a href="table.html">
                     <i class="pe-7s-note2"></i>
