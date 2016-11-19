@@ -30,13 +30,17 @@
 </div>
 @endforeach
 <div class="col-xs-6 text-center col-md-offset-2">
-<h1>Hasil Analisis Tweet</h6>
+    <h1>Hasil Analisis Tweet</h6>
+    <button type="button" class="btn btn-info btn-fill text-center" id="donuts">donuts</button>
+    <button type="button" class="btn btn-info btn-fill text-center" id="bar">batang</button>
+
     <div id="ct-chart5" class="ct-perfect-fourth" style="margin-bottom:30px;"></div>
-    <span style="background-color:#fff; padding:5px;">
-        <small style="color:#1AB394;"> Positif : {{ $count_analisis[0] }}</small>
-        <small style="color:#79D2C0;"> Negatif : {{ $count_analisis[1] }}</small>
-        <small style="color:#D3D3D3;"> Netral : {{ $count_analisis[2] }}</small>
+    <span style="background-color:#fff; padding:5px;" id="desc-chart5">
+        <p style="color:#4d7904;"> Positif : {{ $count_analisis[0] }}</p>
+        <p style="color:#f10614;"> Negatif : {{ $count_analisis[1] }}</p>
+        <p style="color:#999;"> Netral : {{ $count_analisis[2] }}</p>
     </span>
+    <div id="graph"></div>
 </div>
 @stop
 
@@ -44,7 +48,20 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-        var positif = {{ isset($count_analisis) ? $count_analisis[0] : '' }};
+            $('#graph').hide();
+            $('#donuts').click(function(){
+                $('#graph').hide();
+                $('#ct-chart5').show();
+                $('#desc-chart5').show();
+
+            });
+            $('#bar').click(function(){
+                $('#graph').show();
+                $('#ct-chart5').hide();
+                $('#desc-chart5').hide();
+
+            });
+            var positif = {{ isset($count_analisis) ? $count_analisis[0] : '' }};
             var negatif = {{ isset($count_analisis) ? $count_analisis[1] : '' }};
             var netral = {{ isset($count_analisis) ? $count_analisis[2] : '' }};
             var data = {
@@ -57,6 +74,27 @@
                 labelInterpolationFnc: function(value) {
                     return Math.round(value / data.series.reduce(sum) * 100) + '%';
                 }
+            });
+            // Use Morris.Bar
+            Morris.Bar({
+              element: 'graph',
+              data: [
+                {x: 'POSITIF', y: positif},
+                {x: 'NETRAL', y: netral},
+                {x: 'NEGATIF', y: negatif}
+              ],
+              xkey: 'x',
+              ykeys: ['y'],
+              labels: ['Y'],
+              barColors: function (row, series, type) {
+                if (type === 'bar') {
+                  var red = Math.ceil(255 * row.y / this.ymax);
+                  return 'rgb(' + red + ',0,0)';
+                }
+                else {
+                  return '#000';
+                }
+              }
             });
     });
 

@@ -20,15 +20,16 @@ class Preprocessing extends Stemmer
  		foreach ($tweets as $tweet) {
             if(strtotime($tweet->date_tweet) >= strtotime($date.$start_time_tweet) && strtotime($tweet->date_tweet) <= strtotime($date.$end_time_tweet))
             {
-     			foreach ($this->parsing($tweet->tweet) as $term)
+     			foreach ($this->tokenizing($tweet->tweet) as $term)
      			{ 
-                    $tokenizing = $this->tokenizing($term);
-                    if($tokenizing)
+                    $filtering = $this->filtering($term);
+                    if($filtering)
                     {
-                        if($this->stopword($tokenizing))
-                        {
-                            $data_term = $this->NAZIEF($tokenizing);
-                            //$data_term = $tokenizing;
+                        if($this->stopword($filtering))
+                        { 
+                            //fungsi nazief untuk stemming
+                            // $data_term = $this->NAZIEF($filtering);
+                            $data_term = $filtering;
                             $clear_tweet .= $data_term." ";
                             if(strlen($data_term) != 0)
                             {
@@ -46,7 +47,7 @@ class Preprocessing extends Stemmer
         // arsort($terms);
         return $terms;
     }
-    public function tokenizing($term)
+    public function filtering($term)
     {
         if((substr($term, 0,4) == 'http') || (substr($term, 0,1) == '@'))
            return false;
@@ -58,9 +59,9 @@ class Preprocessing extends Stemmer
     	return strtolower($term);
     }
 
-    public function parsing($tweet)
+    public function tokenizing($tweet)
     {
-    	return $parsing = explode(' ',$tweet);
+    	return $tokenizing = explode(' ',$tweet);
     }
     public function stopword($term)
     {

@@ -25,7 +25,40 @@
     <link href="{{ URL('assets/plugins/bootstrap-datepicker/css/datepicker3.css') }} " rel="stylesheet" />
     <link href="{{ URL('assets/plugins/clockpicker/clockpicker.css') }} " rel="stylesheet" />
     <link href="{{ URL('assets/plugins/chartist/chartist.min.css') }} " rel="stylesheet" />
+    <link rel="stylesheet" href="{{ URL('assets/plugins/morris/morris.css') }}">
+    <style type="text/css">
 
+            #exTab1 .tab-content {
+              color : white;
+              /*background-color: #428bca;*/
+              padding : 5px 15px;
+            }
+
+            #exTab2 h3 {
+              color : white;
+              background-color: #428bca;
+              padding : 5px 15px;
+            }
+
+            /* remove border radius for the tab */
+
+            #exTab1 .nav-pills > li > a {
+              border-radius: 0;
+            }
+
+            /* change border radius for the tab , apply corners on top*/
+
+            #exTab3 .nav-pills > li > a {
+              border-radius: 4px 4px 0 0 ;
+            }
+
+            #exTab3 .tab-content {
+              color : white;
+              /*background-color: #428bca;*/
+              padding : 5px 15px;
+            }
+    </style>
+    
 </head>
 <body>
 <div class="wrapper">
@@ -57,6 +90,8 @@
     <script src="{{ URL('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ URL('assets/plugins/clockpicker/clockpicker.js') }}"></script>
     <script src="{{ URL('assets/js/demo.js') }}"></script>
+    <script src="{{ URL('assets/plugins/morris/morris.min.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
     <script type="text/javascript">
        $('#input-date .input-group.date').datepicker({
