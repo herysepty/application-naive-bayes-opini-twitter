@@ -48,7 +48,7 @@ class KlasifikasiController extends Controller
 		$array_tweet = array_merge($positif,$netral,$negatif);
 		$analisis = array(count($positif['positif']),count($negatif['negatif']),count($netral['netral']));
 		Session::flash('message','<div class="alert alert-success">
-                                    Berhasil klasifikasi
+                                    Berhasil analisis
                                 </div>');
 		return view('contents.hasil_klasifikasi')->with('tweets',$array_tweet)->with('count_analisis',$analisis);
     }

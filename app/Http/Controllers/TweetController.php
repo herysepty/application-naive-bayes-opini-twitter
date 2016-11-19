@@ -21,7 +21,7 @@ class TweetController extends Controller
     public function index()
     {	
       
-    	return view('contents.daftar_tweet')->with('tweets',DB::table('tweets')->orderBy('id','desc')->groupBy('tweet')->orderBy('date_tweet',"desc")->paginate(10))->with('tweets_training',$this->checkTweetTraining());
+    	return view('contents.daftar_tweet')->with('tweets',DB::table('tweets')->orderBy('id','DESC')->paginate(10))->with('tweets_training',$this->checkTweetTraining());
     }
     public function preprocessing()
     {   
