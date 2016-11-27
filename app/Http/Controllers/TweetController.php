@@ -48,7 +48,6 @@ class TweetController extends Controller
             {
                 foreach ($tweets->statuses as $tweet)
                 {
-
                     $check_tweet = DB::table('tweets')->where('id_tweet' , $tweet->id_str)->count();
                     if($check_tweet == 0)
                     {

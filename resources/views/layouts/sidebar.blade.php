@@ -62,7 +62,7 @@
             </li>
             <li>
                 <a href="{{ URL('tentang-aplikasi') }}">
-                    <i class="pe-7s-eyedropper"></i>
+                    <i class="pe-7s-info"></i>
                     <small>Tentang Aplikasi Sentiment</small>
                 </a>
             </li>

@@ -23,7 +23,7 @@
                             </a>
                         </li>
                     </ul> -->
-					<p>Analisi Sentimen Twitter Pada Pemilihan Gubernur 2017</p> 
+					<p style="margin-top: 20px;">Analisi Sentimen Twitter Pada Pemilihan Gubernur 2017</p> 
         </nav>
         <p class="copyright pull-right">
             <a href="Tugas Akhir 2016/2017 I Aji Kurniawan I 1011500863">Tugas Akhir Gasal 2016/2017 I Aji Kurniawan I 1011500863</a>
