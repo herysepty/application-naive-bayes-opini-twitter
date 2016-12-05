@@ -198,5 +198,6 @@ class TweetController extends Controller
                                           'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet))
                                         ]);
        }
+       echo "Database berhasil di update";
     }
 }
