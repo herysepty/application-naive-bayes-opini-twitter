@@ -20,8 +20,7 @@ class TweetController extends Controller
 	}
     public function index()
     {	
-      
-    	return view('contents.daftar_tweet')->with('tweets',DB::table('tweets')->orderBy('id','DESC')->paginate(10))->with('tweets_training',$this->checkTweetTraining());
+    	 return view('contents.daftar_tweet')->with('tweets',DB::table('tweets')->orderBy('date_tweet','DESC')->paginate(10))->with('tweets_training',$this->checkTweetTraining());
     }
     public function preprocessing()
     {   
@@ -41,6 +40,8 @@ class TweetController extends Controller
         $twitter->setTimeouts(10, 360000);
 
         $keywords = array('Ahok','Djarot','Agus Yudhoyono','Sylviana murni','Sandiaga Uno','Anies Baswedan','PilkadaDKI2017');
+        // $keywords = array('Ahok','Djarot');
+
         foreach ($keywords as $value_keyword)
         {
             $tweets = $twitter->get("search/tweets", ["q" => $value_keyword,"count"=>100,"result_type"=>"recent"]);
@@ -51,7 +52,7 @@ class TweetController extends Controller
                     $check_tweet = DB::table('tweets')->where('id_tweet' , $tweet->id_str)->count();
                     if($check_tweet == 0)
                     {
-                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $tweet->text,'date_tweet' => $tweet->created_at]);
+                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $tweet->text,'date_tweet' => date('Y-m-d',strtotime($tweet->created_at))]);
                     }
                 }
             }
@@ -185,5 +186,17 @@ class TweetController extends Controller
             Storage::put('public/positif.txt',"");
         }
 
+    }
+
+    public function test() {
+       // echo 'Mon Dec 05 12:51:20 +0000 2016'));
+
+       $getTweets = DB::table('tweets')->get();
+       foreach ($getTweets as $key => $value) {
+            DB::table('tweets') ->where('id',$value->id)
+                                ->update([
+                                          'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet))
+                                        ]);
+       }
     }
 }

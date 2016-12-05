@@ -46,7 +46,7 @@ Route::get('/tentang-aplikasi', function(){
 Route::get('/training/clear/{type}','TweetController@clear');
 
 
-Route::get('/test','TweetController@checkTweetTraining');
+Route::get('/test','TweetController@test');
 
 
 
