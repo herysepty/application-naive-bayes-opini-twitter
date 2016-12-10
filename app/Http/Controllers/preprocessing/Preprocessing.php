@@ -16,7 +16,7 @@ class Preprocessing extends Stemmer
     	$Stemmer = new Stemmer();
 
     	$tweets = DB::table('tweets')
-                    ->where('date_tweet','like',date('D M d%Y',strtotime($date)))->get();
+                    ->where('date_tweet','like',$date.'%')->get();
  		foreach ($tweets as $tweet) {
             if(strtotime($tweet->date_tweet) >= strtotime($date.$start_time_tweet) && strtotime($tweet->date_tweet) <= strtotime($date.$end_time_tweet))
             {

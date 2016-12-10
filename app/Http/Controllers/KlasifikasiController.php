@@ -60,7 +60,7 @@ class KlasifikasiController extends Controller
     	db::table('tweet_preprocessing')->delete();
     	// $terms = $p->preprocesing($post['date_tweet'],$post['start_time_tweet'],$post['end_time_tweet']);
     	$terms = $p->preprocesing(date('Y-m-d',strtotime($post['date'])),$post['start_time_tweet'],$post['end_time_tweet']);
-		$total_tweet    = DB::table('tweets')->where('date_tweet','LIKE',date('D M d%Y',strtotime($post['date'])))->count();
+		$total_tweet    = DB::table('tweets')->where('date_tweet','LIKE',date('Y-m-d%',strtotime($post['date'])))->count();
 
 		if($total_tweet==0)
 		{
@@ -73,7 +73,7 @@ class KlasifikasiController extends Controller
 		{
 
 			Session::flash('message','<div class="alert alert-success">
-                                    Berhasil preprocessing
+                                    Berhasil preprocessing 
                                 </div>');
     		return redirect('tweet/preprocessing');
 		}

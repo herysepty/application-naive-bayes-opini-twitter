@@ -31,8 +31,8 @@
 @endforeach
 <div class="col-xs-6 text-center col-md-offset-2">
     <h1>Hasil Analisis Tweet</h6>
-    <button type="button" class="btn btn-info btn-fill text-center" id="donuts">donuts</button>
-    <button type="button" class="btn btn-info btn-fill text-center" id="bar">batang</button>
+    <button type="button" class="btn btn-info btn-fill text-center" id="donuts">Donuts</button>
+    <button type="button" class="btn btn-info btn-fill text-center" id="bar">Batang</button>
 
     <div id="ct-chart5" class="ct-perfect-fourth" style="margin-bottom:30px;"></div>
     <span style="background-color:#fff; padding:5px;" id="desc-chart5">

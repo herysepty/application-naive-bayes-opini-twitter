@@ -16,7 +16,7 @@ class TweetController extends Controller
 {
 	public function  __construct()
 	{
-		ini_set('max_execution_time', 3000);
+		ini_set('max_execution_time', 10000);
 	}
     public function index()
     {	
@@ -52,7 +52,7 @@ class TweetController extends Controller
                     $check_tweet = DB::table('tweets')->where('id_tweet' , $tweet->id_str)->count();
                     if($check_tweet == 0)
                     {
-                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $tweet->text,'date_tweet' => date('Y-m-d',strtotime($tweet->created_at))]);
+                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $tweet->text,'date_tweet' => date('Y-m-d H:i:s',strtotime($tweet->created_at))]);
                     }
                 }
             }
@@ -191,11 +191,13 @@ class TweetController extends Controller
     public function test() {
        // echo 'Mon Dec 05 12:51:20 +0000 2016'));
 
-       $getTweets = DB::table('tweets')->get();
+       $getTweets = DB::table('tweets_1')->get();
        foreach ($getTweets as $key => $value) {
-            DB::table('tweets') ->where('id',$value->id)
-                                ->update([
-                                          'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet))
+            DB::table('tweets') ->insert([
+                                          'id_tweet'=> $value->id_tweet,
+                                          'username'=> $value->username,
+                                          'tweet'=> $value->tweet,
+                                          'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet)),
                                         ]);
        }
        echo "Database berhasil di update";
