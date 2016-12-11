@@ -47,6 +47,7 @@ Route::get('/training/clear/{type}','TweetController@clear');
 
 
 Route::get('/test','TweetController@test');
+Route::get('/postagger','KlasifikasiController@posTagger');
 
 
 

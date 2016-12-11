@@ -78,4 +78,9 @@ class KlasifikasiController extends Controller
     		return redirect('tweet/preprocessing');
 		}
     }
+
+    public function posTagger(){
+    	$p = new Preprocessing();
+    	$p->posTagger();
+    }
 }

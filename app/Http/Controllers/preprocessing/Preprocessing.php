@@ -3,6 +3,7 @@ namespace App\Http\Controllers\preprocessing;
 use  App\Http\Controllers\preprocessing\Stemmer;
 use DB;
 use Storage;
+use  App\Http\Controllers\posTagger\posTagger;
 // preprocesing: tokenization, filtering, stopterm removal dan stemming.
 // Processing
 // Steaming,Stopterm, penghilangan tanda baca, pemisahan term
@@ -69,5 +70,29 @@ class Preprocessing extends Stemmer
         if($stop_term < 1)
             return true;
         return false;
+    }
+
+    public function posTagger() {
+        $pos_tagger = new postagger();
+        $data = array('baik' , 'bagus','sementara','tidak');
+        $tweet = DB::table('tweet_preprocessing')->get();
+        $term = '';
+        foreach($tweet as $key => $value) {
+            $value_1 = explode(' ',$value->preprocessing);
+            foreach ($value_1 as $key_2 => $value_2) {
+                # code...
+                if($pos_tagger->tagger($value_2) != false){
+                    $term .= $pos_tagger->tagger($value_2)."\n";
+                }
+            }
+        }
+        Storage::put('public/tag.txt',rtrim($term,"\n"));
+        $tag = Storage::get('public/tag.txt');
+
+        echo "<pre>";
+        print_r(explode("\n", $tag));
+        print_r($term);
+        echo "</pre>";
+        // $pos_tagger->opini($term);
     }
 }
