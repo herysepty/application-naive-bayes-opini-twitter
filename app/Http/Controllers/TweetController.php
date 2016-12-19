@@ -52,7 +52,7 @@ class TweetController extends Controller
                     $check_tweet = DB::table('tweets')->where('id_tweet' , $tweet->id_str)->count();
                     if($check_tweet == 0)
                     {
-                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $tweet->text,'date_tweet' => date('Y-m-d H:i:s',strtotime($tweet->created_at))]);
+                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $this->removeWord($tweet->text),'date_tweet' => date('Y-m-d H:i:s',strtotime($tweet->created_at))]);
                     }
                 }
             }
@@ -188,18 +188,34 @@ class TweetController extends Controller
 
     }
 
+    public function removeWord($tweet){
+        $tweet_split = explode(' ',$tweet);
+        $tweet_new = '';
+        foreach ($tweet_split as $key => $value) {
+          if((substr($value, 0,4) == 'http') || (substr($value, 0,1) == '@')){
+            continue;
+          }else{
+            $tweet_new .= $value.' ';
+          }
+        }
+        return rtrim($tweet_new);
+    }
+
     public function test() {
        // echo 'Mon Dec 05 12:51:20 +0000 2016'));
 
-       $getTweets = DB::table('tweets_1')->get();
-       foreach ($getTweets as $key => $value) {
-            DB::table('tweets') ->insert([
-                                          'id_tweet'=> $value->id_tweet,
-                                          'username'=> $value->username,
-                                          'tweet'=> $value->tweet,
-                                          'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet)),
-                                        ]);
-       }
-       echo "Database berhasil di update";
+       // $getTweets = DB::table('tweets_1')->get();
+       // foreach ($getTweets as $key => $value) {
+       //      DB::table('tweets') ->insert([
+       //                                    'id_tweet'=> $value->id_tweet,
+       //                                    'username'=> $value->username,
+       //                                    'tweet'=> $value->tweet,
+       //                                    'date_tweet'=>date('Y-m-d H:i:s',strtotime($value->date_tweet)),
+       //                                  ]);
+       // }
+       // echo "Database berhasil di update";
+       echo $this->removeWord();
+
     }
+
 }
