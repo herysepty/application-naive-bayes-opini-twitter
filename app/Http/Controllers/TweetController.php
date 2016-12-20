@@ -192,7 +192,7 @@ class TweetController extends Controller
         $tweet_split = explode(' ',$tweet);
         $tweet_new = '';
         foreach ($tweet_split as $key => $value) {
-          if((substr($value, 0,4) == 'http') || (substr($value, 0,1) == '@')){
+          if((substr($value, 0,4) == 'http') || (substr($value, 0,1) == '@' || (substr($value, 0,2) == 'RT')){
             continue;
           }else{
             $tweet_new .= $value.' ';
