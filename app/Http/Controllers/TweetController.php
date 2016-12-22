@@ -52,7 +52,10 @@ class TweetController extends Controller
                     $check_tweet = DB::table('tweets')->where('id_tweet' , $tweet->id_str)->count();
                     if($check_tweet == 0)
                     {
-                        DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $this->removeWord($tweet->text),'date_tweet' => date('Y-m-d H:i:s',strtotime($tweet->created_at))]);
+
+                        if($this->removeWord($tweet->text) != ''){   
+                          DB::table('tweets')->insert(['id_tweet' => $tweet->id_str,'username' => $tweet->user->screen_name,'tweet' => $this->removeWord($tweet->text),'date_tweet' => date('Y-m-d H:i:s',strtotime($tweet->created_at))]);
+                        }
                     }
                 }
             }
@@ -192,7 +195,7 @@ class TweetController extends Controller
         $tweet_split = explode(' ',$tweet);
         $tweet_new = '';
         foreach ($tweet_split as $key => $value) {
-          if((substr($value, 0,4) == 'http') || (substr($value, 0,1) == '@' || (substr($value, 0,2) == 'RT')){
+          if((substr($value, 0,4) == 'http') || (substr($value, 0,1) == '@') || (substr($value, 0,2) == 'RT')){
             continue;
           }else{
             $tweet_new .= $value.' ';
