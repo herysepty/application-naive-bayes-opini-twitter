@@ -79,7 +79,7 @@ class posTagger {
 								'PRL' => [
 											'sini',
 											'situ',
-											'ahok'
+											'ahok',
 										],
 								'NEG' => [
 											'bukan',

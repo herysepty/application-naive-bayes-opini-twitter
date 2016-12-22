@@ -39,7 +39,7 @@ class TweetController extends Controller
         $twitter             = new TwitterOAuth($consumer_key,$consumer_secret,$access_token,$access_token_secret);
         $twitter->setTimeouts(10, 360000);
 
-        $keywords = array('Ahok','Djarot','Agus Yudhoyono','Sylviana murni','Sandiaga Uno','Anies Baswedan','PilkadaDKI2017');
+        $keywords = array('Ahok','Agus Yudhoyono','Sandiaga Uno','PilkadaDKI2017');
         // $keywords = array('Ahok','Djarot');
 
         foreach ($keywords as $value_keyword)
