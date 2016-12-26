@@ -3,7 +3,7 @@ namespace App\Http\Controllers\posTagger;
 use DB;
 use Storage;
 class posTagger {
-
+	
 	public $tweet_new;
     
     public function posTagger($tweets){
