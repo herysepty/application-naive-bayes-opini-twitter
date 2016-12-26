@@ -44,7 +44,7 @@ class Preprocessing extends Stemmer
                     }
      			}
                 // Penambahan pos tagger
-                $pos_tagger->postagger($clear_tweet);
+                $pos_tagger->postagger(rtrim($clear_tweet,' '));
                 if($pos_tagger->tweet_new){
                     DB::table('tweet_preprocessing')->insert(['id_tweet' => $tweet->id,'preprocessing' => rtrim($clear_tweet,' ')]);
                     $pos_tagger_result .= $pos_tagger->tweet_new."\n";
@@ -52,7 +52,7 @@ class Preprocessing extends Stemmer
                 $clear_tweet = "";
             }
  		}
-        Storage::put('public/pos_tagger_result.txt',rtrim($pos_tagger_result,"\n"));
+        Storage::put('public/pos_tagger_result.txt',$pos_tagger_result);
         // arsort($terms);
         return $terms;
     }

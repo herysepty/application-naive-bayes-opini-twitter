@@ -7149,7 +7149,7 @@ kayuh	NN kayuh
 kayu-kayuan	NN kayu-kayuan
 kayun	JJ kayun
 kayu	NN kayu
-ke	IN ke
+ke		IN ke
 keabadian	NN keabadian
 keabu-abuan	JJ keabu-abuan
 keadaan	NN keadaan
