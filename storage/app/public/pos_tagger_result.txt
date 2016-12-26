@@ -1,63 +1,39 @@
-nihDT ajaranNN kristenNN konyolJJ 
-perpindahanNN tergantungVB putusanNN 
-perpindahanNN tergantungVB putusanNN 
-menistakanVB muslimNN nyamanJJ 
-menistakanVB muslimNN nyamanJJ 
-perpindahanNN tergantungVB putusanNN 
-gadisNN baktiNN cuekJJ sampahNN diIN gotNN 
-gubernurNN berpihakVB bertolakVB siDT brengsekJJ gaduhJJ 
-keberatanNN nalarNN ditolakVB 
-jikaCC ucapanNN kalahJJ diIN pengadilanNN guePR pelajaranNN perbandinganNN diIN tutupNN 
-diimbangiVB rasismeNN iniDT narasiNN merekaVB pindahVB 
-keIN nasibNN diIN penjaraNN lupaVB 
-sapuNN diIN gadisNN sadarJJ 
-pertaruhanNN diIN dijadikanVB habisVB pikirNN 
-membesarkanVB iniDT baniNN merekaVB bilangVB kaloNN antiJJ ituDT 
-rekamVB jejakNN bersihJJ danCC penghargaanNN diterimaVB 
-perpindahanNN tergantungVB putusanNN 
-nihDT ajaranNN kristenNN konyolJJ 
-surveiNN populerJJ diIN pemilihNN pemulaNN 
-antiJJ iniDT dimunculkanVB berdampakVB rasismeNN tidakMD benciVB 
-membiarkanVB iniDT tidakMD adilJJ diberlakukanVB 
-nihDT ajaranNN kristenNN konyolJJ 
-jikaCC perlawananNN publikNN mengikutiVB ucapanNN diIN seribuCD merekaVB 
-penjelasanNN guePR iniDT beredarVB ditahanVB bedaNN danCC 
-massaNN aksiNN akbarJJ kecewaJJ ditahanVB 
-bikinVB gaduhJJ dijadikanVB nominatorNN perdamaianNN 
-gadisNN patunganVB sapuNN ijukNN 
-diimbangiVB rasismeNN iniDT narasiNN merekaVB pindahVB 
-membesarkanVB iniDT baniNN merekaVB bilangVB kaloNN antiJJ ituDT 
-guePR simpanVB videoNN habibNN danCC keIN jikaCC berdebatVB merekaVB 
-perpindahanNN tergantungVB putusanNN 
-antiJJ iniDT dimunculkanVB berdampakVB rasismeNN tidakMD benciVB 
-apaPR bilangVB kenaVB pasalNN dipakaiVB 
-perpindahanNN tergantungVB putusanNN 
-kaloNN taufikNN gajiNN sopirNN pakaiVB wajarJJ 
-kagakRB mengimaniVB nabiNN bukanMD mengimaniVB sifatNN entePR tukNN 
-iniDT baniNN fotoNN perempuanNN dukungVB 
-iniDT baniNN fotoNN perempuanNN dukungVB 
-iniDT baniNN fotoNN perempuanNN dukungVB 
-gadisNN baktiNN cuekJJ sampahNN diIN gotNN kerenJJ bukanMD lompatVB 
-rekamVB jejakNN bersihJJ danCC penghargaanNN diterimaVB 
-apaPR punDT danCC diIN gubernurNN proyekNN dibahasVB 
-duaCD ditahanVB beraniJJ matiVB 
-perpindahanNN tergantungVB putusanNN 
-iniDT baniNN fotoNN perempuanNN dukungVB 
-surveiNN jikaCC iniDT pemilihNN pemulaNN pilihVB 
-kaloNN taufikNN gajiNN sopirNN pakaiVB wajarJJ 
-habibNN bergiliranVB berucapVB keliruJJ kenaVB paDT 
-ditolakVB dibenciVB bukanMD iniDT benciVB 
-nihDT ajaranNN kristenNN konyolJJ 
-nihDT ajaranNN kristenNN konyolJJ 
-kaloNN kejahatanNN dilawanVB kejahatanNN kaloNN jahatJJ 
-renovasiNN gerahJJ gubernurNN 
-atributNN natalNN diIN kafirJJ takutJJ aqidahNN muNN lunturJJ peciNN danCC sarungNN 
-gubernurNN berpihakVB bertolakVB siDT brengsekJJ gaduhJJ 
-artisNN dangdutNN dewiNN nyanyiVB 
-sayaPR videoNN keIN artisNN dangdutNN dewiNN nyanyiVB 
-gerilyaNN lapanganNN aksiNN lompatVB panggungNN iniDT pengamatNN 
-kampanyeNN diIN pondokNN pinangNN lompatVB 
-keIN abangNN bikinVB terkejutVB 
-keIN abangNN bikinVB terkejutVB 
-keIN abangNN bikinVB terkejutVB 
-keIN abangNN bikinVB terkejutVB 
+banget:RB artis:NN dukung:VB stres:NN pilih:VB no:DT 
+sapa:NN sandiwara:NN wacana:NN manusiawi:JJ 
+pasang:NN massa:NN terancam:VB diskualifikasi:NN 
+sore:NN berkunjung:VB jari:NN 
+pidato:NN mewah:JJ panggung:NN hiburan:NN alat:NN peraga:NN hore:UH 
+rahasia:NN tekan:VB kemiskinan:NN 
+bantah:NN murni:JJ ban:NN serep:NN 
+hot:JJ panas:JJ banget:RB galang:NN kampanye:NN sukses:JJ murni:JJ 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+galang:NN kampanye:NN sukses:JJ murni:JJ ikutan:NN gala:NN 
+murni:JJ ketahuan:VB pasangan:NN didukung:VB 
+murni:JJ ketahuan:VB pasangan:NN didukung:VB 
+siang:NN makan:VB 
+semangat:NN generasi:NN muda:JJ 
+murni:JJ ketahuan:VB pasangan:NN didukung:VB 
+murni:JJ ketahuan:VB pasangan:NN didukung:VB 
+mas:NN didampingi:VB mbak:NN haul:NN gus:NN dur:NN 
+bareng:RB erat:JJ 
+murni:JJ ketahuan:VB pasangan:NN didukung:VB 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+pilih:VB sandi:NN bangun:VB kebudayaan:NN 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+gus:NN dur:NN cerdas:JJ 
+kampanye:NN tangan:VB portal:NN 
