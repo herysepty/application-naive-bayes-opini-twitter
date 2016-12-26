@@ -3,7 +3,7 @@ namespace App\Http\Controllers\posTagger;
 use DB;
 use Storage;
 class posTagger {
-	
+
 	public $tweet_new;
     
     public function posTagger($tweets){
@@ -14,7 +14,7 @@ class posTagger {
       $data = Storage::get('public/inlex.txt');
       $data = explode("\n", $data);
 
-      foreach (explode(' ',$tweets) as $key_tweet => $value_tweet) {
+      foreach (explode(' ',rtrim($tweets,' ')) as $key_tweet => $value_tweet) {
         foreach ($data as $key => $value) {
           $r  = explode("\t",$value);
           if($value_tweet == $r[0]){
