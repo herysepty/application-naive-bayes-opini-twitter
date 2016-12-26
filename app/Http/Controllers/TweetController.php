@@ -217,8 +217,8 @@ class TweetController extends Controller
        //                                  ]);
        // }
        // echo "Database berhasil di update";
-       echo $this->removeWord();
-
+       // echo $this->removeWord();
     }
-
 }
+
+

@@ -13,7 +13,9 @@ class Preprocessing extends Stemmer
 	public function preprocesing($date,$start_time_tweet,$end_time_tweet){
         $terms = array();
         $clear_tweet = "";
+        $pos_tagger_result ="";
         // $clear_tweets = array();
+        $pos_tagger = new postagger();
     	$Stemmer = new Stemmer();
 
     	$tweets = DB::table('tweets')
@@ -41,10 +43,16 @@ class Preprocessing extends Stemmer
                         }
                     }
      			}
-                DB::table('tweet_preprocessing')->insert(['id_tweet' => $tweet->id,'preprocessing' => rtrim($clear_tweet,' ')]);
+                // Penambahan pos tagger
+                $pos_tagger->postagger($clear_tweet);
+                if($pos_tagger->tweet_new){
+                    DB::table('tweet_preprocessing')->insert(['id_tweet' => $tweet->id,'preprocessing' => rtrim($clear_tweet,' ')]);
+                    $pos_tagger_result .= $pos_tagger->tweet_new."\n";
+                }
                 $clear_tweet = "";
             }
  		}
+        Storage::put('public/pos_tagger_result.txt',rtrim($pos_tagger_result,"\n"));
         // arsort($terms);
         return $terms;
     }
@@ -74,25 +82,27 @@ class Preprocessing extends Stemmer
 
     public function posTagger() {
         $pos_tagger = new postagger();
-        $data = array('baik' , 'bagus','sementara','tidak');
+
+        // Storage::put('public/tag.txt',rtrim($term,"\n"));
+        // $tag = Storage::get('public/tag.txt');
+
+        // echo "<pre>";
+        // print_r(explode("\n", $tag));
+        // print_r($term);
+        // echo "</pre>";
+        // $pos_tagger->opini($term);
+
         $tweet = DB::table('tweet_preprocessing')->get();
-        $term = '';
+        $tweet_new;
         foreach($tweet as $key => $value) {
-            $value_1 = explode(' ',$value->preprocessing);
-            foreach ($value_1 as $key_2 => $value_2) {
-                # code...
-                if($pos_tagger->tagger($value_2) != false){
-                    $term .= $pos_tagger->tagger($value_2)."\n";
-                }
+          $tweet_new[] = $value->preprocessing;
+        }
+        foreach (array_unique($tweet_new) as $key => $value) {
+            if($value != ''){
+                $pos_tagger->postagger($value);
+                if($pos_tagger->tweet_new)
+                    echo $pos_tagger->tweet_new."<br/>";
             }
         }
-        Storage::put('public/tag.txt',rtrim($term,"\n"));
-        $tag = Storage::get('public/tag.txt');
-
-        echo "<pre>";
-        print_r(explode("\n", $tag));
-        print_r($term);
-        echo "</pre>";
-        // $pos_tagger->opini($term);
     }
 }

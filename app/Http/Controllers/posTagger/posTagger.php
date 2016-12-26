@@ -1,190 +1,68 @@
 <?php
 namespace App\Http\Controllers\posTagger;
 use DB;
+use Storage;
 class posTagger {
-	private $word;
-	private $tag ;
-	private $pos_tag =	array(
-								'JJ' => [
-											'baik',
-											'bagus',
-										],
-								'RB' => [
-											'sementara',
-											'nanti',
-										],
-								'NN' => [
-											'kursi',
-											'meja',
-										],
-								'NNP' => [
-											'toyota',
-											'honda',
-										],
-								'VBI' => [
-											'motornya',
-											'Pergi',
-										],
-								'VBT' => [
-											'membeli',
-											'Pergi',
-										],
-								'VBT' => [
-											'di',
-											'ke',
-											'dari',
-										],
-								'SC' => [
-											'jika',
-											'ketika',
-										],
-								'DT' => [
-											'para',
-											'ini',
-											'itu',
-										],
-								'UH' => [
-											'wah',
-											'aduh',
-											'oi',
-										],
-								'CDO' => [
-											'pertama',
-											'kedua',
-											'ketiga',
-										],
-								'CDC' => [
-											'berdua'
-										],
-								'CDP' => [
-											'satu',
-											'dua',
-											'tiga',
-										],
-								'CDI' => [
-											'beberapa'
-										],
-								'PRP' => [
-											'saya',
-											'mereka'
-										],
-								'WP' => [
-											'apa',
-											'siapa',
-											'dimana'
-										],
-								'PRN' => [
-											'kedua-duanya'
-										],
-								'PRL' => [
-											'sini',
-											'situ',
-											'ahok'
-										],
-								'NEG' => [
-											'bukan',
-											'tidak',
-										],
-							);
 
+	public $tweet_new;
+    
+    public function posTagger($tweets){
+      $tweet_new = '';
+      $tagset = '';
+      $ruleOpini = $this->ruleOpini();
 
-	public function tagger($term){
-		$this->tag = [];
-		foreach ($this->pos_tag as $key => $value) {
-			if(in_array($term, $value)){
-				$this->tag = $term.' '.$key;
-				return $this->tag;
+      $data = Storage::get('public/inlex.txt');
+      $data = explode("\n", $data);
+
+      foreach (explode(' ',$tweets) as $key_tweet => $value_tweet) {
+        foreach ($data as $key => $value) {
+          $r  = explode("\t",$value);
+          if($value_tweet == $r[0]){
+              $h = explode(' ',$r[1]);
+              $tweet_new .= $h[1].''.$h[0].' ';
+              $tagset .= $h[0].' ';
+              break;
+          }
+        }
+      }
+
+      if($tweet_new != ''){
+			foreach ($ruleOpini as $key => $value) {
+				if(strpos(rtrim($tagset,' '),$value) !== false){
+				    // echo 'Rule opini: '.rtrim($value)."<br/>";
+				    // echo 'Tagset: '.rtrim($tagset,' ')."<br/>";
+				    // echo $tweet_new.'('.$tweets.")<br/>";
+				    $this->tweet_new = $tweet_new;
+				    break;
+				}else{
+					$this->tweet_new = '';
+		      	}
 			}
-		}
-		return false;
-	}
+      	}else{
+			$this->tweet_new = '';
+      	}
+    }
 
-	public function ruleOpini() {
-		$rule = [
-					'RB JJ' => 	[
-									'sangat baik', 
-									'dengan baik',
-									'agak baik',
-								],
-					'RB VB' => [
-									'semoga berjalan', 
-									'semoga membawa',
-								],
-					'NN JJ' => 	[
-									'bukunya bagus', 
-									'pakaianya rapi'
-								],
-					'NN VB' => 	[
-									'pelajaran membosankan', 
-									'perkataanya menjengkelkan',
-								],
-					'JJ VB' => 	[
-									'mudah dipahami', 
-									'gampang dimaafkan',
-								],
-					'CK JJ' => 	[
-									'bagus atau baik', 
-									'tetapi malas',
-								],
-					'JJ BB' => 	[
-									'sama bagus', 
-								],
-					'VB VB' => 	[
-									'membuat merinding', 
-									'membikin pusing', 
-								],
-					'JJ RB' => 	[
-									'indah sekali', 
-									'bagus sekali', 
-								],
-					'VB JJ' => 	[
-									'membikin bingung',
-								],
-					'NEG JJ' => 	[
-									'tidak seindah',
-									'tidak semudah',
-								],
-					'NEG VB' => 	[
-									'tidak mengerti',
-									'tidak memahami',
-								],
-					'PRP VBI' => 	[
-									'saya menyukai',
-								],
-					'PRP VBT' => 	[
-									'kita suka',
-								],
-					'VBT NN' => 	[
-									'memiliki kedekatan',
-								],
-					'MD VBT' => 	[
-									'perlu mengambil referensi',
-								],
-					'MD VBI' => 	[
-									'perlu di kembangkan',
-								],
-		        ];
-		 return $rule;
-	}
-
-	public function opini($term){
-		$term = explode("\n", rtrim($term,"\n"));
-		$tag = '';
-		foreach ($term as $key => $value) {
-			$arr = explode(' ',$value);
-        	$tag .= $arr[1].' ';
-		}
-
-		echo $tag;
-		foreach ($this->ruleOpini() as $key => $value) {
-			if(strpos($tag, $key) !== false){
-				echo "ada<br/>";
-				return true;
-			}else{
-				return false;
-			}
-		}
-
-
-	}
+    public function ruleOpini() {
+    	$ruleOpini = [	
+    					'RB JJ' ,
+				    	'RB VB' ,
+				    	'NN JJ' ,
+				    	'NN VB' ,
+				    	'JJ VB' ,
+				    	'CK JJ' ,
+				    	'JJ BB' ,
+				    	'VB VB' ,
+				    	'JJ RB' ,
+				    	'VB JJ' ,
+				    	'NEG JJ' ,
+				    	'NEG VB' ,
+				    	'PRP VBI' ,
+				    	'PRP VBT' ,
+				    	'VBT NN' ,
+				    	'D VBT' ,
+				    	'MD VBI'
+				    ];
+		return $ruleOpini;
+    }
 }
