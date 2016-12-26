@@ -13,7 +13,6 @@ class posTagger {
 
       $data = Storage::get('public/inlex.txt');
       $data = explode("\n", $data);
-
       foreach (explode(' ',rtrim($tweets,' ')) as $key_tweet => $value_tweet) {
         foreach ($data as $key => $value) {
           $r  = explode("\t",$value);
